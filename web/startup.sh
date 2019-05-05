@@ -1,0 +1,1 @@
+gunicorn -w 2 -k gevent api_server:app -b 0.0.0.0:8080

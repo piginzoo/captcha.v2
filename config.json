@@ -1,0 +1,100 @@
+{
+	"jianhang":{
+		"name":"jianhang",
+		"width":75,
+		"height":32,
+		"number":5,
+		"charset": "0a"
+	},
+	"renfa":{
+		"name": "renfa",
+		"width":160,
+		"height":70,
+		"number":4,
+		"charset": "0aA",
+		"img_binary_threshold":240 
+	},
+	"nonghang":{
+		"name": "nonghang",
+		"width":100,
+		"height":30,
+		"number":4,
+		"charset": "0aA",
+		"img_remove_area":2
+	},
+	"icbc": {
+	    "name": "icbc",
+	    "width": 95,
+	    "height": 36,
+	    "number": 4,
+	    "mask_pad": 1,
+	    "charset": "0aA"
+	},
+	"crr": {
+            "name": "crr",
+            "width": 100,
+            "height": 25,
+            "number": 6,
+            "charset": "0a",
+            "img_remove_area":2,
+            "img_binary_threshold":155
+          },
+	"psbc": {
+	    "name": "psbc",
+	    "width": 110,
+	    "height": 45,
+	    "number": 4,
+	    "charset": "0a",
+	    "img_binary_threshold":240
+	  },
+	"boc": {
+	    "name": "boc",
+	    "width": 100,
+	    "height": 28,
+	    "number": 4,
+	    "charset": "0a",
+	    "img_remove_area":4
+	},
+	"bcm": {
+            "name": "bcm",
+            "width": 80,
+            "height": 28,
+            "number": 5,
+            "charset": "a",
+            "img_remove_area":4,
+            "mask_pad": 1
+    },
+	"zjnx": {
+            "name": "zjnx",
+            "width": 60,
+            "height": 24,
+            "number": 4,
+            "charset": "0a",
+            "img_remove_area":4
+        },
+	"bsb": {
+            "name": "bsb",
+            "width": 70,
+            "height": 32,
+            "number": 4,
+            "charset": "0a",
+            "img_remove_area":8,
+            "inverse_color":true
+        },
+	"sdnx": {
+            "name": "sdnx",
+            "width": 120,
+            "height": 40,
+            "number": 4,
+            "charset": "0a",
+            "img_remove_area":1
+        },
+		"cmbreset": {
+            "name": "cmbreset",
+            "width": 60,
+            "height": 28,
+            "number": 4,
+            "charset": "0",
+            "img_remove_area":4
+        }       
+}

@@ -1,0 +1,63 @@
+#! /bin/bash
+### BEGIN INIT INFO
+# Provides:          
+# Required-Start:    
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Captcha Gunicorn Script
+# Description:       The gunicorn process that receives HTTP requests
+#
+### END INIT INFO
+#
+# Author:       piginzoo <piginzoo@qq.com>
+#
+APPNAME=captcha_gunicorn
+USER=captcha
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+ACTIVATE=/home/captcha/py3/bin/activate
+APPMODULE=api_server:app
+DAEMON=gunicorn
+BIND=0.0.0.0:80
+PIDFILE=/var/run/gunicorn.pid
+LOGFILE=/var/log/$DAEMON.log
+WORKERS=4
+WORKDIR=/home/captcha/captcha/web
+
+
+. /lib/lsb/init-functions
+
+
+if [ -e "/etc/default/$APPNAME" ]
+then
+    . /etc/default/$APPNAME
+fi
+
+
+case "$1" in
+  start)
+        log_daemon_msg "Starting deferred execution scheduler" "$APPNAME"
+        source $ACTIVATE
+        cd $WORKDIR
+        $DAEMON --daemon --bind=$BIND --pid=$PIDFILE --workers=$WORKERS --user=$USER --log-file=$LOGFILE $APPMODULE
+        log_end_msg $?
+    ;;
+  stop)
+        log_daemon_msg "Stopping deferred execution scheduler" "APPNAME"
+        killproc -p $PIDFILE $DAEMON
+        log_end_msg $?
+    ;;
+  force-reload|restart)
+    $0 stop
+    $0 start
+    ;;
+  status)
+    status_of_proc -p $PIDFILE $DAEMON && exit 0 || exit $?
+    ;;
+  *)
+    echo "Usage: /etc/init.d/$APPNAME {start|stop|restart|force-reload|status}"
+    exit 1
+    ;;
+esac
+
+exit 0

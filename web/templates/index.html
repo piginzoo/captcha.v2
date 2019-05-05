@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>验证码测试页面</title>
+	</head>	
+	<body>
+		<h1>验证码测试页面</h1>
+		<div align="left" style="color:red">
+			@程序版本：{{ version }}
+		</div>	
+		<hr>
+		<h2>图片Base64验证</h2>
+		<form action="/captcha" method="POST">
+			<table>
+				<tr>
+					<td>JianShe</td>
+					<td><input type="radio" checked name="bank" value="jianhang"></td>
+				</tr>
+				<tr>
+					<td>RenFa</td>
+					<td><input type="radio" name="bank" value="renfa"></td>
+				</tr>
+				<tr>
+					<td>NongHang</td>
+					<td><input type="radio" name="bank" value="nonghang"></td>
+				</tr>				
+				<tr>
+					<td>GongHang</td>
+					<td><input type="radio" name="bank" value="icbc"></td>
+				</tr>				
+				<tr>
+					<td>ZhongHang</td>
+					<td><input type="radio" name="bank" value="boc"></td>
+				</tr>				
+				<tr>
+					<td>YouChu</td>
+					<td><input type="radio" name="bank" value="psbc"></td>
+				</tr>	
+				<tr>
+					<td>识别图片</td>
+					<td><input type="file" id="upload_file" multiple="multiple" />
+					</td>
+				</tr>
+				<tr>
+					<td>图片Base64编码</td>
+					<td>
+						<textarea id="base64_output" name="image" style=" width:820px"></textarea>
+					</td>
+				</tr>								
+				<tr>
+					<td></td>
+					<td><input type="submit" value="识别"/></td>
+				</tr>
+			</table>
+		</form>
+		<hr>
+		<h2>图片数据验证</h2>
+		<form action="/captcha_recognise" enctype="multipart/form-data"  method="POST">
+			<table>
+				<tr>
+					<td>JianHang</td>
+					<td><input type="radio" name="bank" value="jianhang"></td>
+				</tr>
+				<tr>
+					<td>RenFa</td>
+					<td><input type="radio" checked name="bank" value="renfa"></td>
+				</tr>
+				<tr>
+					<td>NongHang</td>
+					<td><input type="radio" checked name="bank" value="nonghang"></td>
+				</tr>
+				<tr>
+					<td>GongHang</td>
+					<td><input type="radio" name="bank" value="icbc"></td>
+				</tr>				
+				<tr>
+					<td>ZhongHang</td>
+					<td><input type="radio" name="bank" value="boc"></td>
+				</tr>				
+				<tr>
+					<td>YouChu</td>
+					<td><input type="radio" name="bank" value="psbc"></td>
+				</tr>	
+								
+				<tr>
+					<td>识别图片</td>
+					<td><input type="file" name="image" multiple="multiple" />
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="识别"/></td>
+				</tr>
+			</table>
+		</form>
+		<hr>
+		测试图片： <a href="templates/test_data.zip">下载</a>
+	</body>
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"> -->
+	<script type="text/javascript">
+	    document.getElementById("upload_file").onchange = function () {
+	        gen_base64();
+	    };
+	    function $_(id) {
+	            return document.getElementById(id);
+	    }
+	    function gen_base64() {
+	        var file = $_('upload_file').files[0];
+	        r = new FileReader();  //本地预览
+	        r.onload = function(){
+	            $_('base64_output').value = r.result;
+	        }
+	        r.readAsDataURL(file);    //Base64
+	    }
+	</script>
+</html>
